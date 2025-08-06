@@ -68,7 +68,7 @@
         line-height: 1.6;
       }
 
-      /* Fix untuk alignment field */
+      /* Fix untuk alignment field (Flexbox version) */
       .field-row {
         display: flex;
         align-items: baseline;
@@ -96,6 +96,22 @@
         vertical-align: top;
         word-wrap: break-word;
         word-break: break-word;
+      }
+
+      /* Styling untuk alternatif Tabel */
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .data-table td {
+        padding: 1px 0;
+        vertical-align: top;
+      }
+      .data-table .label {
+        width: 128px;
+      }
+      .data-table .colon {
+        width: 8px;
       }
     </style>
   </head>
@@ -168,44 +184,42 @@
         <div class="field-row text-9pt leading-tight-custom">
           <span class="field-label">Nama Lengkap</span>
           <span class="field-colon">:</span>
-          <span class="field-value">{{recipient_nama_lengkap}}</span>
+          <span class="field-value">Ajun Leksama</span>
         </div>
         <div class="field-row text-9pt leading-tight-custom">
           <span class="field-label">Tempat/Tanggal Lahir</span>
           <span class="field-colon">:</span>
-          <span class="field-value"
-            >{{recipient_tempat_lahir}}/{{recipient_tanggal_lahir}}</span
-          >
+          <span class="field-value">Cilacap/04 Agustus 2025</span>
         </div>
         <div class="field-row text-9pt leading-tight-custom">
           <span class="field-label">Jenis Kelamin</span>
           <span class="field-colon">:</span>
-          <span class="field-value">{{recipient_jenis_kelamin}}</span>
+          <span class="field-value">L</span>
         </div>
         <div class="field-row text-9pt leading-tight-custom">
           <span class="field-label">Agama</span>
           <span class="field-colon">:</span>
-          <span class="field-value">{{recipient_agama}}</span>
+          <span class="field-value">Isalm</span>
         </div>
         <div class="field-row text-9pt leading-tight-custom">
           <span class="field-label">Kewarganegaraan</span>
           <span class="field-colon">:</span>
-          <span class="field-value">{{recipient_kewarganegaraan}}</span>
+          <span class="field-value">Indonesia</span>
         </div>
         <div class="field-row text-9pt leading-tight-custom">
           <span class="field-label">No. KTP/SKTLD</span>
           <span class="field-colon">:</span>
-          <span class="field-value">{{recipient_no_ktp_sktld}}</span>
+          <span class="field-value">3098765678976788</span>
         </div>
         <div class="field-row text-9pt leading-tight-custom">
           <span class="field-label">Alamat</span>
           <span class="field-colon">:</span>
-          <span class="field-value">{{recipient_alamat_lengkap}}</span>
+          <span class="field-value">Jalan PLK II Kamboja</span>
         </div>
         <div class="field-row text-9pt leading-tight-custom">
           <span class="field-label">Pekerjaan</span>
           <span class="field-colon">:</span>
-          <span class="field-value">{{recipient_pekerjaan}}</span>
+          <span class="field-value">Developoer</span>
         </div>
       </div>
 
@@ -222,12 +236,12 @@
           {{kelengkapan_tanggal_surat_pengantar}}, benar yang bersangkutan
           diatas akan mengurus peningkatan Sertifikat Hak Guna Bangunan menjadi
           Sertifikat Hak Milik dengan data Sertifikat Hak Guna Bangunan No. 1310
-          an. {{recipient_nama_lengkap}} dengan luas {{kelengkapan_luas_lahan}}
-          M2 yang terletak di {{kelengkapan_alamat_lahan}}. DKI Jakarta dan
-          objek tanah nya berdiri bangunan rumah tinggal. Surat keterangan ini
-          diperlukan untuk kepengurursan Administrasi Ke BPN. Yang dipergunakan
-          Sebagai : Apabila di kemudian hari keterangan/pengakuan yang
-          bersangkutan tidak benar/melanggar aturan yang berlaku/membuat
+          an. Ajun Leksama dengan luas {{kelengkapan_luas_lahan}} M2 yang
+          terletak di {{kelengkapan_alamat_lahan}}. DKI Jakarta dan objek tanah
+          nya berdiri bangunan rumah tinggal. Surat keterangan ini diperlukan
+          untuk kepengurursan Administrasi Ke BPN. Yang dipergunakan Sebagai :
+          Apabila di kemudian hari keterangan/pengakuan yang bersangkutan tidak
+          benar/melanggar aturan yang berlaku/membuat
           pengakuan/keterangan/keresahan/keberatan dari pihak yang berwenata
           sebagai pemilik yang memilafatkan surat keterangan ini, maka
           sepenuhnya menjadi tanggung jawab yang bersangkutan tanpa melibatkan
@@ -241,7 +255,6 @@
       </div>
 
       <div class="flex justify-end items-start gap-4 mt-16 mb-8">
-        <!-- QR Code (di kiri, dekat tanda tangan) -->
         <div>
           <img
             src="https://www.avasam.com/wp-content/uploads/2019/10/qr-sample.png"
@@ -250,7 +263,6 @@
           />
         </div>
 
-        <!-- Tanda tangan (di kanan) -->
         <div class="text-center text-9pt leading-tight-custom">
           <p class="mb-1">Jakarta, {{issue_date}}</p>
           <p class="mb-12">LURAH KAMPUNG BALI</p>
