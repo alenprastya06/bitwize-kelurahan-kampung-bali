@@ -4,243 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Surat Keterangan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      /* Reset dan Base Styles - Optimized for PDF Single Page */
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+      /* Custom font sizes for precise control */
+      .text-9pt {
+        font-size: 12pt;
       }
-
-      html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
+      .text-10pt {
+        font-size: 13pt;
       }
-
-      body {
-        font-family: "Times New Roman", Times, serif;
-        margin: 0;
-        padding: 0;
-        font-size: 9pt; /* Reduced from 10pt */
-        line-height: 1.1; /* Reduced from 1.2 */
-        color: #000;
-        background-color: white;
-        position: relative;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
+      .text-11pt {
+        font-size: 14pt;
       }
-
-      p {
-        margin: 0;
-        padding: 0;
+      .text-8pt {
+        font-size: 11pt;
       }
-
-      .container {
-        width: 100%;
-        max-width: none;
-        background-color: white;
-        position: relative;
-        flex: 1;
+      .text-7pt {
+        font-size: 10pt;
       }
-
-      /* Header */
-      .header {
-        display: table;
-        width: 100%;
-        border-bottom: 2px solid black;
-        padding-bottom: 2mm; /* Reduced from 3mm */
-        margin-bottom: 2mm; /* Reduced from 3mm */
+      /* Custom line heights */
+      .leading-tight-custom {
+        line-height: 1.4;
       }
-
-      .header-content {
-        display: table-row;
-        width: 100%;
-      }
-
-      .logo {
-        display: table-cell;
-        vertical-align: top;
-        width: 18mm; /* Reduced from 20mm */
-        padding-right: 2mm; /* Reduced from 3mm */
-      }
-
-      .logo img {
-        height: 16mm; /* Reduced from 18mm */
-        width: auto;
-        display: block;
-      }
-
-      .header-text {
-        display: table-cell;
-        vertical-align: top;
-        text-align: center;
-        width: auto;
-      }
-
-      .header-title {
-        font-weight: bold;
-        font-size: 10pt; /* Reduced from 11pt */
-        line-height: 1; /* Reduced from 1.1 */
-        margin-bottom: 1.5mm; /* Reduced from 2mm */
-      }
-
-      .header-details {
-        display: block;
-        text-align: left;
-        font-size: 8pt; /* Reduced from 9pt */
-        line-height: 1.1; /* Reduced from 1.2 */
-      }
-
-      .header-row {
-        display: block;
-        margin-bottom: 0.3mm; /* Reduced from 0.5mm */
-      }
-
-      .header-label {
-        display: inline-block;
-        width: 30mm; /* Reduced from 32mm */
-        font-weight: normal;
-      }
-
-      .header-colon {
-        display: inline-block;
-        width: 2mm;
-      }
-
-      .header-value {
-        display: inline-block;
-      }
-
-      /* Document Title */
-      .document-title {
-        text-align: center;
-        font-weight: bold;
-        font-size: 11pt; /* Reduced from 12pt */
-        text-decoration: underline;
-        margin-top: 3mm; /* Reduced from 4mm */
-        margin-bottom: 1.5mm; /* Reduced from 2mm */
-      }
-
-      .document-number {
-        text-align: center;
-        margin-bottom: 3mm; /* Reduced from 4mm */
-        font-size: 9pt; /* Reduced from 10pt */
-      }
-
-      /* Section Text */
-      .section-text {
-        margin-bottom: 1.5mm; /* Reduced from 2mm */
-        text-align: justify;
-        font-size: 9pt; /* Reduced from 10pt */
-        line-height: 1.1; /* Reduced from 1.2 */
-      }
-
-      /* Indent List */
-      .indent-list {
-        margin-left: 6mm; /* Reduced from 8mm */
-        margin-bottom: 2mm; /* Reduced from 3mm */
-      }
-
-      .indent-item {
-        display: block;
-        margin-bottom: 0.3mm; /* Reduced from 0.5mm */
-        font-size: 9pt; /* Reduced from 10pt */
-        line-height: 1.1; /* Reduced from 1.2 */
-      }
-
-      .indent-label {
-        display: inline-block;
-        width: 30mm; /* Reduced from 32mm */
-        vertical-align: top;
-      }
-
-      .indent-colon {
-        display: inline-block;
-        width: 2mm;
-        vertical-align: top;
-      }
-
-      .indent-value {
-        display: inline-block;
-        width: calc(100% - 36mm); /* Adjusted from 38mm */
-        vertical-align: top;
-        word-wrap: break-word;
-      }
-
-      /* Main Content */
-      .main-content {
-        text-align: justify;
-        text-indent: 6mm; /* Reduced from 8mm */
-        margin-top: 2mm; /* Reduced from 3mm */
-        margin-bottom: 3mm; /* Reduced from 4mm */
-        font-size: 9pt; /* Reduced from 10pt */
-        line-height: 1.4; /* Reduced from 1.2 */
-      }
-
-      /* Bottom Section */
-      .bottom-section {
-        display: table;
-        width: 100%;
-        margin-top: 40px; /* Reduced from 4mm */
-        margin-bottom: 2mm; /* Reduced from 3mm */
-      }
-
-      .qr-section {
-        position: relative;
-        width: 40%;
-        text-align: center;
-        vertical-align: top;
-        padding-top: 5mm; /* Reduced from 2mm */
-      }
-
-      .qr-code {
-        position: absolute;
-        right: 0px;
-        width: 12mm; /* Reduced from 15mm */
-        height: 12mm; /* Reduced from 15mm */
-        border: 1px solid #333;
-        padding: 0.3mm; /* Reduced from 0.5mm */
-        display: inline-block;
-      }
-
-      .signature-block {
-        display: table-cell;
-        width: 60%;
-        text-align: right;
-        vertical-align: top;
-        font-size: 9pt; /* Reduced from 10pt */
-        line-height: 1.1; /* Reduced from 1.2 */
-        padding-left: 4mm; /* Reduced from 5mm */
-      }
-
-      .signature-space {
-        height: 8mm; /* Reduced from 10mm */
-        display: block;
-      }
-
-      .signature-name {
-        font-weight: bold;
-        text-decoration: underline;
-        margin-top: 0.5mm; /* Reduced from 1mm */
-      }
-
-      /* Footer - Always at bottom */
-      .footer {
-        margin: 0;
-        margin-top: auto;
-        font-size: 7pt; /* Reduced from 8pt */
-        border-top: 1px solid #ccc;
-        padding: 1.5mm 0; /* Reduced from 2mm */
-        line-height: 1; /* Reduced from 1.1 */
-        text-align: justify;
-        background-color: white;
-        flex-shrink: 0;
-      }
-
-      .footer p {
-        margin-bottom: 0.3mm; /* Reduced from 0.5mm */
+      .leading-relaxed-custom {
+        line-height: 1.6;
       }
 
       /* Print specific styles */
@@ -254,7 +41,7 @@
         }
 
         body {
-          margin: 8mm 10mm 5mm 10mm; /* Reduced margins */
+          margin: 8mm 10mm 5mm 10mm;
           padding-bottom: 0;
           display: block;
           min-height: auto;
@@ -267,57 +54,62 @@
           flex: none;
         }
 
-        .footer {
+        footer {
           margin-bottom: 0 !important;
           margin-top: auto;
           border-top: 1px solid #ccc;
-          padding: 1mm 0; /* Further reduced for print */
+          padding: 1mm 0;
           flex-shrink: 0;
         }
       }
 
       @page {
         size: Legal;
-        margin: 8mm 10mm 5mm 10mm; /* Reduced page margins */
+        margin: 8mm 10mm 5mm 10mm;
       }
     </style>
   </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <div class="header-content">
-          <div class="logo">
+  <body
+    class="font-serif m-0 p-0 text-9pt leading-tight-custom text-black bg-white relative min-h-screen flex flex-col"
+  >
+    <div class="w-full max-w-none bg-white relative flex-1">
+      <div class="table w-full border-b-2 border-black pb-1 mb-1">
+        <div class="table-row w-full">
+          <div class="table-cell align-top w-20 pr-2">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Coat_of_arms_of_Jakarta.svg/1200px-Coat_of_arms_of_Jakarta.svg.png"
               alt="Logo"
+              class="h-16 w-auto block"
             />
           </div>
 
-          <div class="header-text">
-            <p class="header-title">
-              PEMERINTAH PROVINSI DAERAH KHUSUS IBUKOTA JAKARTA (Ahli Waris )
+          <div class="table-cell align-top text-center w-auto">
+            <p class="font-bold text-10pt leading-none mb-1">
+              PEMERINTAH PROVINSI DAERAH KHUSUS IBUKOTA JAKARTA ( Ahli Waris )
             </p>
 
-            <div class="header-details">
-              <div class="header-row">
-                <span class="header-label">KOTA ADMINISTRASI</span>
-                <span class="header-colon">:</span>
-                <span class="header-value">JAKARTA PUSAT</span>
+            <div class="block text-left text-8pt leading-tight-custom">
+              <div class="block mb-0.5">
+                <span class="inline-block w-32 font-semibold"
+                  >KOTA ADMINISTRASI</span
+                >
+                <span class="inline-block w-2">:</span>
+                <span class="inline-block">JAKARTA PUSAT</span>
               </div>
-              <div class="header-row">
-                <span class="header-label">KECAMATAN</span>
-                <span class="header-colon">:</span>
-                <span class="header-value">TANAH ABANG</span>
+              <div class="block mb-0.5">
+                <span class="inline-block w-32 font-semibold">KECAMATAN</span>
+                <span class="inline-block w-2">:</span>
+                <span class="inline-block">TANAH ABANG</span>
               </div>
-              <div class="header-row">
-                <span class="header-label">KELURAHAN</span>
-                <span class="header-colon">:</span>
-                <span class="header-value">KAMPUNG BALI</span>
+              <div class="block mb-0.5">
+                <span class="inline-block w-32 font-semibold">KELURAHAN</span>
+                <span class="inline-block w-2">:</span>
+                <span class="inline-block">KAMPUNG BALI</span>
               </div>
-              <div class="header-row">
-                <span class="header-label">ALAMAT</span>
-                <span class="header-colon">:</span>
-                <span class="header-value"
+              <div class="block mb-0.5">
+                <span class="inline-block w-32 font-semibold">ALAMAT</span>
+                <span class="inline-block w-2">:</span>
+                <span class="inline-block"
                   >Jl. Kampung Bali V No. 8 RT.005/08 021 3927391</span
                 >
               </div>
@@ -326,66 +118,99 @@
         </div>
       </div>
 
-      <div class="document-title">
+      <div class="text-center font-bold text-11pt underline mt-3 mb-1.5">
         <p>SURAT KETERANGAN</p>
       </div>
-      <div class="document-number">
+      <div class="text-center mb-3 text-9pt">
         <p>NOMOR: {{letter_number}}</p>
       </div>
 
-      <div class="section-text">
+      <div class="mb-1.5 text-justify text-9pt leading-tight-custom">
         <p>
           Yang bertanda tangan di bawah ini lurah Kelurahan Kampung Bali
           Menerangkan bahwa :
         </p>
       </div>
 
-      <div class="indent-list">
-        <div class="indent-item">
-          <span class="indent-label">Nama Lengkap</span>
-          <span class="indent-colon">:</span>
-          <span class="indent-value">{{recipient_nama_lengkap}}</span>
+      <div class="ml-6 mb-2">
+        <div class="block mb-0.5 text-9pt leading-tight-custom">
+          <span class="inline-block w-32 align-top">Nama Lengkap</span>
+          <span class="inline-block w-2 align-top">:</span>
+          <span
+            class="inline-block align-top break-words"
+            style="width: calc(100% - 144px)"
+            >{{recipient_nama_lengkap}}</span
+          >
         </div>
-        <div class="indent-item">
-          <span class="indent-label">Tempat/Tanggal Lahir</span>
-          <span class="indent-colon">:</span>
-          <span class="indent-value"
+        <div class="block mb-0.5 text-9pt leading-tight-custom">
+          <span class="inline-block w-32 align-top">Tempat/Tanggal Lahir</span>
+          <span class="inline-block w-2 align-top">:</span>
+          <span
+            class="inline-block align-top break-words"
+            style="width: calc(100% - 144px)"
             >{{recipient_tempat_lahir}}/ {{recipient_tanggal_lahir}}</span
           >
         </div>
-        <div class="indent-item">
-          <span class="indent-label">Jenis Kelamin</span>
-          <span class="indent-colon">:</span>
-          <span class="indent-value">{{recipient_jenis_kelamin}}</span>
+        <div class="block mb-0.5 text-9pt leading-tight-custom">
+          <span class="inline-block w-32 align-top">Jenis Kelamin</span>
+          <span class="inline-block w-2 align-top">:</span>
+          <span
+            class="inline-block align-top break-words"
+            style="width: calc(100% - 144px)"
+            >{{recipient_jenis_kelamin}}</span
+          >
         </div>
-        <div class="indent-item">
-          <span class="indent-label">Agama</span>
-          <span class="indent-colon">:</span>
-          <span class="indent-value">{{recipient_agama}}</span>
+        <div class="block mb-0.5 text-9pt leading-tight-custom">
+          <span class="inline-block w-32 align-top">Agama</span>
+          <span class="inline-block w-2 align-top">:</span>
+          <span
+            class="inline-block align-top break-words"
+            style="width: calc(100% - 144px)"
+            >{{recipient_agama}}</span
+          >
         </div>
-        <div class="indent-item">
-          <span class="indent-label">Kewarganegaraan</span>
-          <span class="indent-colon">:</span>
-          <span class="indent-value">{{recipient_kewarganegaraan}}</span>
+        <div class="block mb-0.5 text-9pt leading-tight-custom">
+          <span class="inline-block w-32 align-top">Kewarganegaraan</span>
+          <span class="inline-block w-2 align-top">:</span>
+          <span
+            class="inline-block align-top break-words"
+            style="width: calc(100% - 144px)"
+            >{{recipient_kewarganegaraan}}</span
+          >
         </div>
-        <div class="indent-item">
-          <span class="indent-label">No. KTP/SKTLD</span>
-          <span class="indent-colon">:</span>
-          <span class="indent-value">{{recipient_no_ktp_sktld}}</span>
+        <div class="block mb-0.5 text-9pt leading-tight-custom">
+          <span class="inline-block w-32 align-top">No. KTP/SKTLD</span>
+          <span class="inline-block w-2 align-top">:</span>
+          <span
+            class="inline-block align-top break-words"
+            style="width: calc(100% - 144px)"
+            >{{recipient_no_ktp_sktld}}</span
+          >
         </div>
-        <div class="indent-item">
-          <span class="indent-label">Alamat</span>
-          <span class="indent-colon">:</span>
-          <span class="indent-value">{{recipient_alamat_lengkap}}</span>
+        <div class="block mb-0.5 text-9pt leading-tight-custom">
+          <span class="inline-block w-32 align-top">Alamat</span>
+          <span class="inline-block w-2 align-top">:</span>
+          <span
+            class="inline-block align-top break-words"
+            style="width: calc(100% - 144px)"
+            >{{recipient_alamat_lengkap}}</span
+          >
         </div>
-        <div class="indent-item">
-          <span class="indent-label">Pekerjaan</span>
-          <span class="indent-colon">:</span>
-          <span class="indent-value">{{recipient_pekerjaan}}</span>
+        <div class="block mb-0.5 text-9pt leading-tight-custom">
+          <span class="inline-block w-32 align-top">Pekerjaan</span>
+          <span class="inline-block w-2 align-top">:</span>
+          <span
+            class="inline-block align-top break-words"
+            style="width: calc(100% - 144px)"
+            >{{recipient_pekerjaan}}</span
+          >
         </div>
       </div>
 
-      <div class="main-content">
+      <div
+        class="text-justify mt-2 mb-3 text-9pt leading-relaxed-custom"
+        style="text-indent: 6mm"
+      >
         <p>
           Berdasarkan surat pengantar RT {{kelengkapan_rt}} RW
           {{kelengkapan_rw}} No.{{kelengkapan_no_surat_pengantar}} Tanggal
@@ -413,34 +238,35 @@
         </p>
       </div>
 
-      <div class="bottom-section">
-        <div class="qr-section">
+      <div class="flex justify-end items-start gap-4 mt-16 mb-8">
+        <div>
           <img
             src="https://www.avasam.com/wp-content/uploads/2019/10/qr-sample.png"
             alt="QR Code"
-            class="qr-code"
+            class="w-16 h-16 border border-gray-800 p-1 mt-10"
           />
         </div>
 
-        <div class="signature-block">
-          <p>Jakarta, {{issue_date}}</p>
-          <p>LURAH KAMPUNG BALI</p>
-          <div class="signature-space"></div>
-          <p class="signature-name">{{approver_name}}</p>
+        <div class="text-center text-9pt leading-tight-custom">
+          <p class="mb-1">Jakarta, {{issue_date}}</p>
+          <p class="mb-12">LURAH KAMPUNG BALI</p>
+          <p class="font-bold underline">{{approver_name}}</p>
           <p>NIP. 199608292004122001</p>
         </div>
       </div>
-
-      <div class="footer" style="margin-top: 100px !important">
-        <p>
-          Dokumen ini ditandatangani secara elektronik menggunakan sertifikat
-          elektronik dari BSrE BSSN.
-        </p>
-        <p>
-          Scan QR code yang ada pada izin ini untuk memeriksa keaslian data.
-        </p>
-        <p>Lindungi aku dan kamu dengan menjadi mandiri</p>
-      </div>
     </div>
+
+    <footer
+      class="w-full text-7pt border-t border-gray-400 pt-2 leading-tight text-justify bg-white mt-auto mb-0"
+    >
+      <p class="mb-1">
+        Dokumen ini ditandatangani secara elektronik menggunakan sertifikat
+        elektronik dari BSrE BSSN.
+      </p>
+      <p class="mb-1">
+        Scan QR code yang ada pada izin ini untuk memeriksa keaslian data.
+      </p>
+      <p class="mb-0">Lindungi aku dan kamu dengan menjadi mandiri</p>
+    </footer>
   </body>
 </html>
