@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surat Keterangan</title>
+    <style>
+      /* Reset dan Base Styles - Optimized for PDF Single Page */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      body {
+        font-family: "Times New Roman", Times, serif;
+        margin: 0;
+        padding: 0;
+        font-size: 9pt; /* Reduced from 10pt */
+        line-height: 1.1; /* Reduced from 1.2 */
+        color: #000;
+        background-color: white;
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 100%;
+        max-width: none;
+        background-color: white;
+        position: relative;
+        flex: 1;
+      }
+
+      /* Header */
+      .header {
+        display: table;
+        width: 100%;
+        border-bottom: 2px solid black;
+        padding-bottom: 2mm; /* Reduced from 3mm */
+        margin-bottom: 2mm; /* Reduced from 3mm */
+      }
+
+      .header-content {
+        display: table-row;
+        width: 100%;
+      }
+
+      .logo {
+        display: table-cell;
+        vertical-align: top;
+        width: 18mm; /* Reduced from 20mm */
+        padding-right: 2mm; /* Reduced from 3mm */
+      }
+
+      .logo img {
+        height: 16mm; /* Reduced from 18mm */
+        width: auto;
+        display: block;
+      }
+
+      .header-text {
+        display: table-cell;
+        vertical-align: top;
+        text-align: center;
+        width: auto;
+      }
+
+      .header-title {
+        font-weight: bold;
+        font-size: 10pt; /* Reduced from 11pt */
+        line-height: 1; /* Reduced from 1.1 */
+        margin-bottom: 1.5mm; /* Reduced from 2mm */
+      }
+
+      .header-details {
+        display: block;
+        text-align: left;
+        font-size: 8pt; /* Reduced from 9pt */
+        line-height: 1.1; /* Reduced from 1.2 */
+      }
+
+      .header-row {
+        display: block;
+        margin-bottom: 0.3mm; /* Reduced from 0.5mm */
+      }
+
+      .header-label {
+        display: inline-block;
+        width: 30mm; /* Reduced from 32mm */
+        font-weight: normal;
+      }
+
+      .header-colon {
+        display: inline-block;
+        width: 2mm;
+      }
+
+      .header-value {
+        display: inline-block;
+      }
+
+      /* Document Title */
+      .document-title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 11pt; /* Reduced from 12pt */
+        text-decoration: underline;
+        margin-top: 3mm; /* Reduced from 4mm */
+        margin-bottom: 1.5mm; /* Reduced from 2mm */
+      }
+
+      .document-number {
+        text-align: center;
+        margin-bottom: 3mm; /* Reduced from 4mm */
+        font-size: 9pt; /* Reduced from 10pt */
+      }
+
+      /* Section Text */
+      .section-text {
+        margin-bottom: 1.5mm; /* Reduced from 2mm */
+        text-align: justify;
+        font-size: 9pt; /* Reduced from 10pt */
+        line-height: 1.1; /* Reduced from 1.2 */
+      }
+
+      /* Indent List */
+      .indent-list {
+        margin-left: 6mm; /* Reduced from 8mm */
+        margin-bottom: 2mm; /* Reduced from 3mm */
+      }
+
+      .indent-item {
+        display: block;
+        margin-bottom: 0.3mm; /* Reduced from 0.5mm */
+        font-size: 9pt; /* Reduced from 10pt */
+        line-height: 1.1; /* Reduced from 1.2 */
+      }
+
+      .indent-label {
+        display: inline-block;
+        width: 30mm; /* Reduced from 32mm */
+        vertical-align: top;
+      }
+
+      .indent-colon {
+        display: inline-block;
+        width: 2mm;
+        vertical-align: top;
+      }
+
+      .indent-value {
+        display: inline-block;
+        width: calc(100% - 36mm); /* Adjusted from 38mm */
+        vertical-align: top;
+        word-wrap: break-word;
+      }
+
+      /* Main Content */
+      .main-content {
+        text-align: justify;
+        text-indent: 6mm; /* Reduced from 8mm */
+        margin-top: 2mm; /* Reduced from 3mm */
+        margin-bottom: 3mm; /* Reduced from 4mm */
+        font-size: 9pt; /* Reduced from 10pt */
+        line-height: 1.4; /* Reduced from 1.2 */
+      }
+
+      /* Bottom Section */
+      .bottom-section {
+        display: table;
+        width: 100%;
+        margin-top: 40px; /* Reduced from 4mm */
+        margin-bottom: 2mm; /* Reduced from 3mm */
+      }
+
+      .qr-section {
+        position: relative;
+        width: 40%;
+        text-align: center;
+        vertical-align: top;
+        padding-top: 5mm; /* Reduced from 2mm */
+      }
+
+      .qr-code {
+        position: absolute;
+        right: 0px;
+        width: 12mm; /* Reduced from 15mm */
+        height: 12mm; /* Reduced from 15mm */
+        border: 1px solid #333;
+        padding: 0.3mm; /* Reduced from 0.5mm */
+        display: inline-block;
+      }
+
+      .signature-block {
+        display: table-cell;
+        width: 60%;
+        text-align: right;
+        vertical-align: top;
+        font-size: 9pt; /* Reduced from 10pt */
+        line-height: 1.1; /* Reduced from 1.2 */
+        padding-left: 4mm; /* Reduced from 5mm */
+      }
+
+      .signature-space {
+        height: 8mm; /* Reduced from 10mm */
+        display: block;
+      }
+
+      .signature-name {
+        font-weight: bold;
+        text-decoration: underline;
+        margin-top: 0.5mm; /* Reduced from 1mm */
+      }
+
+      /* Footer - Always at bottom */
+      .footer {
+        margin: 0;
+        margin-top: auto;
+        font-size: 7pt; /* Reduced from 8pt */
+        border-top: 1px solid #ccc;
+        padding: 1.5mm 0; /* Reduced from 2mm */
+        line-height: 1; /* Reduced from 1.1 */
+        text-align: justify;
+        background-color: white;
+        flex-shrink: 0;
+      }
+
+      .footer p {
+        margin-bottom: 0.3mm; /* Reduced from 0.5mm */
+      }
+
+      /* Print specific styles */
+      @media print {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          width: auto;
+          height: auto;
+        }
+
+        body {
+          margin: 8mm 10mm 5mm 10mm; /* Reduced margins */
+          padding-bottom: 0;
+          display: block;
+          min-height: auto;
+        }
+
+        .container {
+          width: 100%;
+          height: auto;
+          min-height: auto;
+          flex: none;
+        }
+
+        .footer {
+          margin-bottom: 0 !important;
+          margin-top: auto;
+          border-top: 1px solid #ccc;
+          padding: 1mm 0; /* Further reduced for print */
+          flex-shrink: 0;
+        }
+      }
+
+      @page {
+        size: Legal;
+        margin: 8mm 10mm 5mm 10mm; /* Reduced page margins */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header-content">
+          <div class="logo">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Coat_of_arms_of_Jakarta.svg/1200px-Coat_of_arms_of_Jakarta.svg.png"
+              alt="Logo"
+            />
+          </div>
+
+          <div class="header-text">
+            <p class="header-title">
+              PEMERINTAH PROVINSI DAERAH KHUSUS IBUKOTA JAKARTA (Hak Atas Tanah
+              )
+            </p>
+
+            <div class="header-details">
+              <div class="header-row">
+                <span class="header-label">KOTA ADMINISTRASI</span>
+                <span class="header-colon">:</span>
+                <span class="header-value">JAKARTA PUSAT</span>
+              </div>
+              <div class="header-row">
+                <span class="header-label">KECAMATAN</span>
+                <span class="header-colon">:</span>
+                <span class="header-value">TANAH ABANG</span>
+              </div>
+              <div class="header-row">
+                <span class="header-label">KELURAHAN</span>
+                <span class="header-colon">:</span>
+                <span class="header-value">KAMPUNG BALI</span>
+              </div>
+              <div class="header-row">
+                <span class="header-label">ALAMAT</span>
+                <span class="header-colon">:</span>
+                <span class="header-value"
+                  >Jl. Kampung Bali V No. 8 RT.005/08 021 3927391</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="document-title">
+        <p>SURAT KETERANGAN</p>
+      </div>
+      <div class="document-number">
+        <p>NOMOR: {{letter_number}}</p>
+      </div>
+
+      <div class="section-text">
+        <p>
+          Yang bertanda tangan di bawah ini lurah Kelurahan Kampung Bali
+          Menerangkan bahwa :
+        </p>
+      </div>
+
+      <div class="indent-list">
+        <div class="indent-item">
+          <span class="indent-label">Nama Lengkap</span>
+          <span class="indent-colon">:</span>
+          <span class="indent-value">{{recipient_nama_lengkap}}</span>
+        </div>
+        <div class="indent-item">
+          <span class="indent-label">Tempat/Tanggal Lahir</span>
+          <span class="indent-colon">:</span>
+          <span class="indent-value"
+            >{{recipient_tempat_lahir}}/ {{recipient_tanggal_lahir}}</span
+          >
+        </div>
+        <div class="indent-item">
+          <span class="indent-label">Jenis Kelamin</span>
+          <span class="indent-colon">:</span>
+          <span class="indent-value">{{recipient_jenis_kelamin}}</span>
+        </div>
+        <div class="indent-item">
+          <span class="indent-label">Agama</span>
+          <span class="indent-colon">:</span>
+          <span class="indent-value">{{recipient_agama}}</span>
+        </div>
+        <div class="indent-item">
+          <span class="indent-label">Kewarganegaraan</span>
+          <span class="indent-colon">:</span>
+          <span class="indent-value">{{recipient_kewarganegaraan}}</span>
+        </div>
+        <div class="indent-item">
+          <span class="indent-label">No. KTP/SKTLD</span>
+          <span class="indent-colon">:</span>
+          <span class="indent-value">{{recipient_no_ktp_sktld}}</span>
+        </div>
+        <div class="indent-item">
+          <span class="indent-label">Alamat</span>
+          <span class="indent-colon">:</span>
+          <span class="indent-value">{{recipient_alamat_lengkap}}</span>
+        </div>
+        <div class="indent-item">
+          <span class="indent-label">Pekerjaan</span>
+          <span class="indent-colon">:</span>
+          <span class="indent-value">{{recipient_pekerjaan}}</span>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <p>
+          Berdasarkan surat pengantar RT {{kelengkapan_rt}} RW
+          {{kelengkapan_rw}} No.{{kelengkapan_no_surat_pengantar}} Tanggal
+          {{kelengkapan_tanggal_surat_pengantar}}, Menerangkan Bahwa benar nama
+          tersebut diatas adalah warga kami yang ingin mengajukan PM1.,
+          berdasarkan surat pernyataan tanggal
+          {{kelengkapan_tanggal_surat_pengantar}}, benar yang bersangkutan
+          diatas akan mengurus peningkatan Sertifikat Hak Guna Bangunan menjadi
+          Sertifikat Hak Milik dengan data Sertifikat Hak Guna Bangunan No. 1310
+          an. {{recipient_nama_lengkap}} dengan luas {{kelengkapan_luas_lahan}}
+          M2 yang terletak di {{kelengkapan_alamat_lahan}}. DKI Jakarta dan
+          objek tanah nya berdiri bangunan rumah tinggal. Surat keterangan ini
+          diperlukan untuk kepengurursan Administrasi Ke BPN. Yang dipergunakan
+          Sebagai : Apabila di kemudian hari keterangan/pengakuan yang
+          bersangkutan tidak benar/melanggar aturan yang berlaku/membuat
+          pengakuan/keterangan/keresahan/keberatan dari pihak yang berwenarta
+          sebagai pemilik yang memilafatkan surat keterangan ini, maka
+          sepenuhnya menjadi tanggung jawab yang bersangkutan tanpa melibatkan
+          aparat/pejabat yang menandatanganinya dan Surat Keterangan ini
+          dinyatakan tidak berlaku/dibatalkan kecuali ada penyelesaian sesuai
+          peraturan yang berlaku. Demikian Surat Keterangan ini dibuat untuk
+          dapat dipergunakan sebagaimana mestinya dan bukan merupakan
+          rekomendasi dan berlaku selama 3 (tiga) bulan setelah tanggal
+          diterbitkan
+        </p>
+      </div>
+
+      <div class="bottom-section">
+        <div class="qr-section">
+          <img
+            src="https://www.avasam.com/wp-content/uploads/2019/10/qr-sample.png"
+            alt="QR Code"
+            class="qr-code"
+          />
+        </div>
+
+        <div class="signature-block">
+          <p>Jakarta, {{issue_date}}</p>
+          <p>LURAH KAMPUNG BALI</p>
+          <div class="signature-space"></div>
+          <p class="signature-name">{{approver_name}}</p>
+          <p>NIP. 199608292004122001</p>
+        </div>
+      </div>
+
+      <div class="footer" style="margin-top: 100px !important">
+        <p>
+          Dokumen ini ditandatangani secara elektronik menggunakan sertifikat
+          elektronik dari BSrE BSSN.
+        </p>
+        <p>
+          Scan QR code yang ada pada izin ini untuk memeriksa keaslian data.
+        </p>
+        <p>Lindungi aku dan kamu dengan menjadi mandiri</p>
+      </div>
+    </div>
+  </body>
+</html>

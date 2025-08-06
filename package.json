@@ -1,0 +1,32 @@
+{
+  "name": "be",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "@tailwindcss/postcss": "^4.1.11",
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "html-pdf": "^3.0.1",
+    "html-to-pdf": "^0.1.11",
+    "install": "^0.13.0",
+    "jspdf-autotable": "^5.0.2",
+    "jspdf-html2canvas": "^1.5.2",
+    "multer": "^2.0.2",
+    "mysql2": "^3.14.2",
+    "npm": "^11.5.2",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+    "uuid": "^7.0.3",
+    "wkhtmltopdf": "^0.4.0"
+  }
+}
