@@ -72,63 +72,33 @@
       .field-table {
         display: table;
         width: 100%;
-        margin-bottom: 0.125rem;
       }
 
       .field-row {
         display: table-row;
       }
 
-      .field-label {
+      .field-label,
+      .field-colon,
+      .field-value {
         display: table-cell;
-        width: 128px;
         vertical-align: top;
-        padding-right: 8px;
+        padding-bottom: 2px; /* Memberi sedikit jarak antar baris */
+      }
+
+      .field-label {
+        width: 178px;
         white-space: nowrap;
       }
 
       .field-colon {
-        display: table-cell;
         width: 8px;
-        vertical-align: top;
-        padding-right: 8px;
+        padding-right: 4px;
       }
 
       .field-value {
-        display: table-cell;
-        vertical-align: top;
         word-wrap: break-word;
         word-break: break-word;
-      }
-
-      /* Fallback untuk browser yang tidak support table-cell dengan baik */
-      @supports not (display: table-cell) {
-        .field-table {
-          display: block;
-        }
-
-        .field-row {
-          display: flex;
-          align-items: baseline;
-          margin-bottom: 0.125rem;
-        }
-
-        .field-label {
-          display: block;
-          width: 128px;
-          flex-shrink: 0;
-        }
-
-        .field-colon {
-          display: block;
-          width: 8px;
-          flex-shrink: 0;
-        }
-
-        .field-value {
-          display: block;
-          flex: 1;
-        }
       }
     </style>
   </head>
@@ -196,74 +166,50 @@
         </p>
       </div>
 
-      <div class="ml-6 mb-2">
-        <div class="field-table text-9pt leading-tight-custom">
+      <div class="ml-6 mb-2 text-9pt leading-tight-custom">
+        <div class="field-table">
           <div class="field-row">
             <div class="field-label">Nama Lengkap</div>
             <div class="field-colon">:</div>
-            <div class="field-value">{{recipient_nama_lengkap}}</div>
+            <div class="field-value">Ajun Leksama</div>
           </div>
-        </div>
-
-        <div class="field-table text-9pt leading-tight-custom">
           <div class="field-row">
             <div class="field-label">Tempat/Tanggal Lahir</div>
             <div class="field-colon">:</div>
-            <div class="field-value">
-              {{recipient_tempat_lahir}}/{{recipient_tanggal_lahir}}
-            </div>
+            <div class="field-value">Cilacap/04 Agustus 2025</div>
           </div>
-        </div>
-
-        <div class="field-table text-9pt leading-tight-custom">
           <div class="field-row">
             <div class="field-label">Jenis Kelamin</div>
             <div class="field-colon">:</div>
-            <div class="field-value">{{recipient_jenis_kelamin}}</div>
+            <div class="field-value">L</div>
           </div>
-        </div>
-
-        <div class="field-table text-9pt leading-tight-custom">
           <div class="field-row">
             <div class="field-label">Agama</div>
             <div class="field-colon">:</div>
-            <div class="field-value">{{recipient_agama}}</div>
+            <div class="field-value">Isalm</div>
           </div>
-        </div>
-
-        <div class="field-table text-9pt leading-tight-custom">
           <div class="field-row">
             <div class="field-label">Kewarganegaraan</div>
             <div class="field-colon">:</div>
-            <div class="field-value">{{recipient_kewarganegaraan}}</div>
+            <div class="field-value">Indonesia</div>
           </div>
-        </div>
-
-        <div class="field-table text-9pt leading-tight-custom">
           <div class="field-row">
             <div class="field-label">No. KTP/SKTLD</div>
             <div class="field-colon">:</div>
-            <div class="field-value">{{recipient_no_ktp_sktld}}</div>
+            <div class="field-value">3098765678976788</div>
           </div>
-        </div>
-
-        <div class="field-table text-9pt leading-tight-custom">
           <div class="field-row">
             <div class="field-label">Alamat</div>
             <div class="field-colon">:</div>
-            <div class="field-value">{{recipient_alamat_lengkap}}</div>
+            <div class="field-value">Jalan PLK II Kamboja</div>
           </div>
-        </div>
-
-        <div class="field-table text-9pt leading-tight-custom">
           <div class="field-row">
             <div class="field-label">Pekerjaan</div>
             <div class="field-colon">:</div>
-            <div class="field-value">{{recipient_pekerjaan}}</div>
+            <div class="field-value">Developoer</div>
           </div>
         </div>
       </div>
-
       <div
         class="text-justify mt-2 mb-3 text-9pt leading-relaxed-custom"
         style="text-indent: 6mm"
@@ -277,12 +223,12 @@
           {{kelengkapan_tanggal_surat_pengantar}}, benar yang bersangkutan
           diatas akan mengurus peningkatan Sertifikat Hak Guna Bangunan menjadi
           Sertifikat Hak Milik dengan data Sertifikat Hak Guna Bangunan No. 1310
-          an. {{recipient_nama_lengkap}} dengan luas {{kelengkapan_luas_lahan}}
-          M2 yang terletak di {{kelengkapan_alamat_lahan}}. DKI Jakarta dan
-          objek tanah nya berdiri bangunan rumah tinggal. Surat keterangan ini
-          diperlukan untuk kepengurursan Administrasi Ke BPN. Yang dipergunakan
-          Sebagai : Apabila di kemudian hari keterangan/pengakuan yang
-          bersangkutan tidak benar/melanggar aturan yang berlaku/membuat
+          an. Ajun Leksama dengan luas {{kelengkapan_luas_lahan}} M2 yang
+          terletak di {{kelengkapan_alamat_lahan}}. DKI Jakarta dan objek tanah
+          nya berdiri bangunan rumah tinggal. Surat keterangan ini diperlukan
+          untuk kepengurursan Administrasi Ke BPN. Yang dipergunakan Sebagai :
+          Apabila di kemudian hari keterangan/pengakuan yang bersangkutan tidak
+          benar/melanggar aturan yang berlaku/membuat
           pengakuan/keterangan/keresahan/keberatan dari pihak yang berwenata
           sebagai pemilik yang memilafatkan surat keterangan ini, maka
           sepenuhnya menjadi tanggung jawab yang bersangkutan tanpa melibatkan
@@ -305,7 +251,7 @@
         </div>
 
         <div class="text-center text-9pt leading-tight-custom">
-          <p class="mb-1">Jakarta, {{issue_date}}</p>
+          <p class="mb-1">Jakarta, 07 Agustus 2025</p>
           <p class="mb-12">LURAH KAMPUNG BALI</p>
           <p class="font-bold underline">{{approver_name}}</p>
           <p>NIP. 199608292004122001</p>

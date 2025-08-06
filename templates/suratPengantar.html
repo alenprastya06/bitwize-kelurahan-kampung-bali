@@ -71,53 +71,19 @@
       /* CSS Grid Layout untuk field - sangat stabil untuk Puppeteer */
       .fields-container {
         display: grid;
-        grid-template-columns: 128px 8px 1fr;
-        gap: 0 0;
+        grid-template-columns: 178px auto 1fr; /* Kolom label, titik dua (auto), dan value (fleksibel) */
         align-items: baseline;
-        margin-bottom: 0.125rem;
-      }
-
-      .field-label {
-        grid-column: 1;
-        white-space: nowrap;
-        padding-right: 4px;
-      }
-
-      .field-colon {
-        grid-column: 2;
-        text-align: left;
+        row-gap: 2px; /* Jarak antar baris */
+        column-gap: 4px; /* Jarak antar kolom */
       }
 
       .field-value {
-        grid-column: 3;
         word-wrap: break-word;
         word-break: break-word;
         hyphens: auto;
       }
 
-      /* Backup flexbox untuk browser yang tidak support grid dengan baik */
-      @supports not (display: grid) {
-        .fields-container {
-          display: flex;
-          align-items: baseline;
-          margin-bottom: 0.125rem;
-        }
-
-        .field-label {
-          width: 128px;
-          flex-shrink: 0;
-          padding-right: 4px;
-        }
-
-        .field-colon {
-          width: 8px;
-          flex-shrink: 0;
-        }
-
-        .field-value {
-          flex: 1;
-        }
-      }
+      /* Tidak perlu styling khusus untuk label dan colon karena grid akan mengaturnya */
     </style>
   </head>
   <body
@@ -180,7 +146,7 @@
       <div class="mb-1.5 text-justify text-9pt leading-tight-custom">
         <p>
           Yang bertanda tangan di bawah ini lurah Kelurahan Kampung Bali
-          Menerangkan bahwa :
+          Menerangkan bahwa : p>
         </p>
       </div>
 
@@ -188,54 +154,30 @@
         <div class="fields-container text-9pt leading-tight-custom">
           <div class="field-label">Nama Lengkap</div>
           <div class="field-colon">:</div>
-          <div class="field-value">{{recipient_nama_lengkap}}</div>
-        </div>
-
-        <div class="fields-container text-9pt leading-tight-custom">
+          <div class="field-value">Ajun Leksama</div>
           <div class="field-label">Tempat/Tanggal Lahir</div>
           <div class="field-colon">:</div>
-          <div class="field-value">
-            {{recipient_tempat_lahir}}/{{recipient_tanggal_lahir}}
-          </div>
-        </div>
-
-        <div class="fields-container text-9pt leading-tight-custom">
+          <div class="field-value">Cilacap/04 Agustus 2025</div>
           <div class="field-label">Jenis Kelamin</div>
           <div class="field-colon">:</div>
-          <div class="field-value">{{recipient_jenis_kelamin}}</div>
-        </div>
-
-        <div class="fields-container text-9pt leading-tight-custom">
+          <div class="field-value">L</div>
           <div class="field-label">Agama</div>
           <div class="field-colon">:</div>
-          <div class="field-value">{{recipient_agama}}</div>
-        </div>
-
-        <div class="fields-container text-9pt leading-tight-custom">
+          <div class="field-value">Isalm</div>
           <div class="field-label">Kewarganegaraan</div>
           <div class="field-colon">:</div>
-          <div class="field-value">{{recipient_kewarganegaraan}}</div>
-        </div>
-
-        <div class="fields-container text-9pt leading-tight-custom">
+          <div class="field-value">Indonesia</div>
           <div class="field-label">No. KTP/SKTLD</div>
           <div class="field-colon">:</div>
-          <div class="field-value">{{recipient_no_ktp_sktld}}</div>
-        </div>
-
-        <div class="fields-container text-9pt leading-tight-custom">
+          <div class="field-value">3098765678976788</div>
           <div class="field-label">Alamat</div>
           <div class="field-colon">:</div>
-          <div class="field-value">{{recipient_alamat_lengkap}}</div>
-        </div>
-
-        <div class="fields-container text-9pt leading-tight-custom">
+          <div class="field-value">Jalan PLK II Kamboja</div>
           <div class="field-label">Pekerjaan</div>
           <div class="field-colon">:</div>
-          <div class="field-value">{{recipient_pekerjaan}}</div>
+          <div class="field-value">Developoer</div>
         </div>
       </div>
-
       <div
         class="text-justify mt-2 mb-3 text-9pt leading-relaxed-custom"
         style="text-indent: 6mm"
@@ -249,12 +191,12 @@
           {{kelengkapan_tanggal_surat_pengantar}}, benar yang bersangkutan
           diatas akan mengurus peningkatan Sertifikat Hak Guna Bangunan menjadi
           Sertifikat Hak Milik dengan data Sertifikat Hak Guna Bangunan No. 1310
-          an. {{recipient_nama_lengkap}} dengan luas {{kelengkapan_luas_lahan}}
-          M2 yang terletak di {{kelengkapan_alamat_lahan}}. DKI Jakarta dan
-          objek tanah nya berdiri bangunan rumah tinggal. Surat keterangan ini
-          diperlukan untuk kepengurursan Administrasi Ke BPN. Yang dipergunakan
-          Sebagai : Apabila di kemudian hari keterangan/pengakuan yang
-          bersangkutan tidak benar/melanggar aturan yang berlaku/membuat
+          an. Ajun Leksama dengan luas {{kelengkapan_luas_lahan}} M2 yang
+          terletak di {{kelengkapan_alamat_lahan}}. DKI Jakarta dan objek tanah
+          nya berdiri bangunan rumah tinggal. Surat keterangan ini diperlukan
+          untuk kepengurursan Administrasi Ke BPN. Yang dipergunakan Sebagai :
+          Apabila di kemudian hari keterangan/pengakuan yang bersangkutan tidak
+          benar/melanggar aturan yang berlaku/membuat
           pengakuan/keterangan/keresahan/keberatan dari pihak yang berwenata
           sebagai pemilik yang memilafatkan surat keterangan ini, maka
           sepenuhnya menjadi tanggung jawab yang bersangkutan tanpa melibatkan
@@ -277,7 +219,7 @@
         </div>
 
         <div class="text-center text-9pt leading-tight-custom">
-          <p class="mb-1">Jakarta, {{issue_date}}</p>
+          <p class="mb-1">Jakarta, 07 Agustus 2025</p>
           <p class="mb-12">LURAH KAMPUNG BALI</p>
           <p class="font-bold underline">{{approver_name}}</p>
           <p>NIP. 199608292004122001</p>
