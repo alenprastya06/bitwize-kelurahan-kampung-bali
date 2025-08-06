@@ -67,10 +67,74 @@
         size: Legal;
         margin: 8mm 10mm 5mm 10mm;
       }
+
+      /* Fix untuk field alignment - menggunakan table layout yang lebih stabil */
+      .field-table {
+        display: table;
+        width: 100%;
+        margin-bottom: 0.125rem;
+      }
+
+      .field-row {
+        display: table-row;
+      }
+
+      .field-label {
+        display: table-cell;
+        width: 128px;
+        vertical-align: top;
+        padding-right: 8px;
+        white-space: nowrap;
+      }
+
+      .field-colon {
+        display: table-cell;
+        width: 8px;
+        vertical-align: top;
+        padding-right: 8px;
+      }
+
+      .field-value {
+        display: table-cell;
+        vertical-align: top;
+        word-wrap: break-word;
+        word-break: break-word;
+      }
+
+      /* Fallback untuk browser yang tidak support table-cell dengan baik */
+      @supports not (display: table-cell) {
+        .field-table {
+          display: block;
+        }
+
+        .field-row {
+          display: flex;
+          align-items: baseline;
+          margin-bottom: 0.125rem;
+        }
+
+        .field-label {
+          display: block;
+          width: 128px;
+          flex-shrink: 0;
+        }
+
+        .field-colon {
+          display: block;
+          width: 8px;
+          flex-shrink: 0;
+        }
+
+        .field-value {
+          display: block;
+          flex: 1;
+        }
+      }
     </style>
   </head>
   <body
     class="font-serif m-0 p-0 text-9pt leading-tight-custom text-black bg-white relative min-h-screen flex flex-col"
+    style="font-family: 'Times New Roman', Times, serif"
   >
     <div class="w-full max-w-none bg-white relative flex-1">
       <div class="table w-full border-b-2 border-black pb-1 mb-1">
@@ -133,77 +197,70 @@
       </div>
 
       <div class="ml-6 mb-2">
-        <div class="block mb-0.5 text-9pt leading-tight-custom">
-          <span class="inline-block w-32 align-top">Nama Lengkap</span>
-          <span class="inline-block w-2 align-top">:</span>
-          <span
-            class="inline-block align-top break-words"
-            style="width: calc(100% - 144px)"
-            >{{recipient_nama_lengkap}}</span
-          >
+        <div class="field-table text-9pt leading-tight-custom">
+          <div class="field-row">
+            <div class="field-label">Nama Lengkap</div>
+            <div class="field-colon">:</div>
+            <div class="field-value">{{recipient_nama_lengkap}}</div>
+          </div>
         </div>
-        <div class="block mb-0.5 text-9pt leading-tight-custom">
-          <span class="inline-block w-32 align-top">Tempat/Tanggal Lahir</span>
-          <span class="inline-block w-2 align-top">:</span>
-          <span
-            class="inline-block align-top break-words"
-            style="width: calc(100% - 144px)"
-            >{{recipient_tempat_lahir}}/ {{recipient_tanggal_lahir}}</span
-          >
+
+        <div class="field-table text-9pt leading-tight-custom">
+          <div class="field-row">
+            <div class="field-label">Tempat/Tanggal Lahir</div>
+            <div class="field-colon">:</div>
+            <div class="field-value">
+              {{recipient_tempat_lahir}}/{{recipient_tanggal_lahir}}
+            </div>
+          </div>
         </div>
-        <div class="block mb-0.5 text-9pt leading-tight-custom">
-          <span class="inline-block w-32 align-top">Jenis Kelamin</span>
-          <span class="inline-block w-2 align-top">:</span>
-          <span
-            class="inline-block align-top break-words"
-            style="width: calc(100% - 144px)"
-            >{{recipient_jenis_kelamin}}</span
-          >
+
+        <div class="field-table text-9pt leading-tight-custom">
+          <div class="field-row">
+            <div class="field-label">Jenis Kelamin</div>
+            <div class="field-colon">:</div>
+            <div class="field-value">{{recipient_jenis_kelamin}}</div>
+          </div>
         </div>
-        <div class="block mb-0.5 text-9pt leading-tight-custom">
-          <span class="inline-block w-32 align-top">Agama</span>
-          <span class="inline-block w-2 align-top">:</span>
-          <span
-            class="inline-block align-top break-words"
-            style="width: calc(100% - 144px)"
-            >{{recipient_agama}}</span
-          >
+
+        <div class="field-table text-9pt leading-tight-custom">
+          <div class="field-row">
+            <div class="field-label">Agama</div>
+            <div class="field-colon">:</div>
+            <div class="field-value">{{recipient_agama}}</div>
+          </div>
         </div>
-        <div class="block mb-0.5 text-9pt leading-tight-custom">
-          <span class="inline-block w-32 align-top">Kewarganegaraan</span>
-          <span class="inline-block w-2 align-top">:</span>
-          <span
-            class="inline-block align-top break-words"
-            style="width: calc(100% - 144px)"
-            >{{recipient_kewarganegaraan}}</span
-          >
+
+        <div class="field-table text-9pt leading-tight-custom">
+          <div class="field-row">
+            <div class="field-label">Kewarganegaraan</div>
+            <div class="field-colon">:</div>
+            <div class="field-value">{{recipient_kewarganegaraan}}</div>
+          </div>
         </div>
-        <div class="block mb-0.5 text-9pt leading-tight-custom">
-          <span class="inline-block w-32 align-top">No. KTP/SKTLD</span>
-          <span class="inline-block w-2 align-top">:</span>
-          <span
-            class="inline-block align-top break-words"
-            style="width: calc(100% - 144px)"
-            >{{recipient_no_ktp_sktld}}</span
-          >
+
+        <div class="field-table text-9pt leading-tight-custom">
+          <div class="field-row">
+            <div class="field-label">No. KTP/SKTLD</div>
+            <div class="field-colon">:</div>
+            <div class="field-value">{{recipient_no_ktp_sktld}}</div>
+          </div>
         </div>
-        <div class="block mb-0.5 text-9pt leading-tight-custom">
-          <span class="inline-block w-32 align-top">Alamat</span>
-          <span class="inline-block w-2 align-top">:</span>
-          <span
-            class="inline-block align-top break-words"
-            style="width: calc(100% - 144px)"
-            >{{recipient_alamat_lengkap}}</span
-          >
+
+        <div class="field-table text-9pt leading-tight-custom">
+          <div class="field-row">
+            <div class="field-label">Alamat</div>
+            <div class="field-colon">:</div>
+            <div class="field-value">{{recipient_alamat_lengkap}}</div>
+          </div>
         </div>
-        <div class="block mb-0.5 text-9pt leading-tight-custom">
-          <span class="inline-block w-32 align-top">Pekerjaan</span>
-          <span class="inline-block w-2 align-top">:</span>
-          <span
-            class="inline-block align-top break-words"
-            style="width: calc(100% - 144px)"
-            >{{recipient_pekerjaan}}</span
-          >
+
+        <div class="field-table text-9pt leading-tight-custom">
+          <div class="field-row">
+            <div class="field-label">Pekerjaan</div>
+            <div class="field-colon">:</div>
+            <div class="field-value">{{recipient_pekerjaan}}</div>
+          </div>
         </div>
       </div>
 
@@ -258,6 +315,7 @@
 
     <footer
       class="w-full text-7pt border-t border-gray-400 pt-2 leading-tight text-justify bg-white mt-auto mb-0"
+      style="font-family: 'Times New Roman', Times, serif"
     >
       <p class="mb-1">
         Dokumen ini ditandatangani secara elektronik menggunakan sertifikat
