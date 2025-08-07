@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const cors = require("cors");
+// const cors = require("cors"); // ← COMMENT INI
 const authRoutes = require("./routes/auth");
 const documentRoutes = require("./routes/documents");
 const profilRoutes = require("./routes/profile");
@@ -10,24 +10,23 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Define allowed origins
+// COMMENT SELURUH BAGIAN CORS INI
+/*
 const allowedOrigins = [
   "https://sidarabali.my.id",
-  "http://localhost:3000", // For development
-  "http://127.0.0.1:3000", // For development
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
 ];
 
-// Configure CORS middleware
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps) or from an allowed origin
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true, // Allow cookies to be sent
+  credentials: true,
   optionsSuccessStatus: 200,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: [
@@ -39,8 +38,8 @@ const corsOptions = {
   ],
 };
 
-// Apply CORS middleware ONCE and early in the stack
 app.use(cors(corsOptions));
+*/
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -55,7 +54,8 @@ app.use("/api/kelengkapan", kelengkapanData);
 app.use("/api/auth", authRoutes);
 app.use("/api/documents", documentRoutes);
 
-// Error handling middleware
+// COMMENT ERROR HANDLING CORS INI JUGA
+/*
 app.use((error, req, res, next) => {
   if (error.message === "Not allowed by CORS") {
     res.status(403).json({
@@ -63,10 +63,10 @@ app.use((error, req, res, next) => {
       message: "Origin not allowed",
     });
   } else {
-    // Pass other errors to the default Express error handler
     next(error);
   }
 });
+*/
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
