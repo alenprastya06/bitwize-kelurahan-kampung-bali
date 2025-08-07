@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const authRoutes = require("./routes/auth");
 const documentRoutes = require("./routes/documents");
 const profilRoutes = require("./routes/profile");
@@ -8,6 +9,9 @@ const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Izinkan semua origin
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
