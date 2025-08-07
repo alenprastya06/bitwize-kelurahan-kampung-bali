@@ -10,14 +10,17 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Izinkan semua origin
-app.use(cors());
-
+app.use(
+  cors({
+    origin: "https://sidarabali.my.id",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  })
+);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// Routes
 app.use("/api", profilRoutes);
 app.use("/api/kelengkapan", kelengkapanData);
 app.use("/api/auth", authRoutes);
