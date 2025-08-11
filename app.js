@@ -1,6 +1,5 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const cors = require("cors");
 const authRoutes = require("./routes/auth");
 const documentRoutes = require("./routes/documents");
 const profilRoutes = require("./routes/profile");
@@ -10,13 +9,6 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// app.use(
-//   cors({
-//     origin: "https://sidarabali.my.id",
-//     credentials: true,
-//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-//   })
-// );
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
