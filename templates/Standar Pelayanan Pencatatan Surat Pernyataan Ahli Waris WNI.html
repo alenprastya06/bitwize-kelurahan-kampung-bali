@@ -6,6 +6,31 @@
     <title>Surat Keterangan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+      /* Custom font sizes for precise control */
+      .text-9pt {
+        font-size: 12pt;
+      }
+      .text-10pt {
+        font-size: 13pt;
+      }
+      .text-11pt {
+        font-size: 14pt;
+      }
+      .text-8pt {
+        font-size: 11pt;
+      }
+      .text-7pt {
+        font-size: 10pt;
+      }
+      /* Custom line heights */
+      .leading-tight-custom {
+        line-height: 1.4;
+      }
+      .leading-relaxed-custom {
+        line-height: 1.6;
+      }
+
+      /* Print specific styles */
       @media print {
         html,
         body {
@@ -43,75 +68,37 @@
         margin: 8mm 10mm 5mm 10mm;
       }
 
-      /* Custom font size for precise control */
-      .text-9pt {
-        font-size: 12pt;
-      }
-      .text-10pt {
-        font-size: 13pt;
-      }
-      .text-11pt {
-        font-size: 14pt;
-      }
-      .text-8pt {
-        font-size: 11pt;
-      }
-      .text-7pt {
-        font-size: 10pt;
+      /* Fix untuk field alignment - menggunakan table layout yang lebih stabil */
+      .field-table {
+        display: table;
+        width: 100%;
       }
 
-      /* Custom line heights */
-      .leading-tight-custom {
-        line-height: 1.4;
-      }
-      .leading-relaxed-custom {
-        line-height: 1.6;
-      }
-
-      /* Fix untuk alignment field (Flexbox version) */
       .field-row {
-        display: flex;
-        align-items: baseline;
-        margin-bottom: 0.125rem;
-        min-height: 1.2em;
+        display: table-row;
+      }
+
+      .field-label,
+      .field-colon,
+      .field-value {
+        display: table-cell;
+        vertical-align: top;
+        padding-bottom: 2px; /* Memberi sedikit jarak antar baris */
       }
 
       .field-label {
         width: 200px;
-        flex-shrink: 0;
-        display: inline-block;
-        vertical-align: top;
+        white-space: nowrap;
       }
 
       .field-colon {
         width: 8px;
-        flex-shrink: 0;
-        display: inline-block;
-        vertical-align: top;
+        padding-right: 4px;
       }
 
       .field-value {
-        flex: 1;
-        display: inline-block;
-        vertical-align: top;
         word-wrap: break-word;
         word-break: break-word;
-      }
-
-      /* Styling untuk alternatif Tabel */
-      .data-table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      .data-table td {
-        padding: 1px 0;
-        vertical-align: top;
-      }
-      .data-table .label {
-        width: 128px;
-      }
-      .data-table .colon {
-        width: 8px;
       }
     </style>
   </head>
@@ -132,8 +119,7 @@
 
           <div class="table-cell align-top text-center w-auto">
             <p class="font-bold text-10pt leading-none mb-1">
-              PEMERINTAH PROVINSI DAERAH KHUSUS IBUKOTA JAKARTA ( EKS Kota praja
-              )
+              PEMERINTAH PROVINSI DAERAH KHUSUS IBUKOTA JAKARTA ( Ahli Waris )
             </p>
 
             <div class="block text-left text-8pt leading-tight-custom">
@@ -224,7 +210,6 @@
           <span class="field-value">{{recipient_pekerjaan}}</span>
         </div>
       </div>
-
       <div
         class="text-justify mt-2 mb-3 text-9pt leading-relaxed-custom"
         style="text-indent: 6mm"
@@ -238,7 +223,7 @@
           {{kelengkapan_tanggal_surat_pengantar}}, benar yang bersangkutan
           diatas akan mengurus peningkatan Sertifikat Hak Guna Bangunan menjadi
           Sertifikat Hak Milik dengan data Sertifikat Hak Guna Bangunan No. 1310
-          an. Ajun Leksama dengan luas {{kelengkapan_luas_lahan}} M2 yang
+          an. {{recipient_nama_lengkap}} dengan luas {{kelengkapan_luas_lahan}} M2 yang
           terletak di {{kelengkapan_alamat_lahan}}. DKI Jakarta dan objek tanah
           nya berdiri bangunan rumah tinggal. Surat keterangan ini diperlukan
           untuk kepengurursan Administrasi Ke BPN. Yang dipergunakan Sebagai :
@@ -266,7 +251,7 @@
         </div>
 
         <div class="text-center text-9pt leading-tight-custom">
-          <p class="mb-1">Jakarta, {{issue_date}}</p>
+          <p class="mb-1">Jakarta, 07 Agustus 2025</p>
           <p class="mb-12">LURAH KAMPUNG BALI</p>
           <p class="font-bold underline">{{approver_name}}</p>
           <p>NIP. 199608292004122001</p>

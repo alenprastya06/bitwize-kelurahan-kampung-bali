@@ -22,7 +22,7 @@ const generatePdfFromHtml = async (htmlContent, outputPath) => {
 
   try {
     const page = await browser.newPage();
-    await page.setContent(htmlContent);
+    await page.setContent(htmlContent, { waitUntil: "networkidle0", timeout: 60000 });
 
     await page.pdf({
       path: outputPath,

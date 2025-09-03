@@ -68,38 +68,22 @@
         margin: 8mm 10mm 5mm 10mm;
       }
 
-      /* Fix untuk field alignment - menggunakan table layout yang lebih stabil */
-      .field-table {
-        display: table;
-        width: 100%;
-      }
-
-      .field-row {
-        display: table-row;
-      }
-
-      .field-label,
-      .field-colon,
-      .field-value {
-        display: table-cell;
-        vertical-align: top;
-        padding-bottom: 2px; /* Memberi sedikit jarak antar baris */
-      }
-
-      .field-label {
-        width: 200px;
-        white-space: nowrap;
-      }
-
-      .field-colon {
-        width: 8px;
-        padding-right: 4px;
+      /* CSS Grid Layout untuk field - sangat stabil untuk Puppeteer */
+      .fields-container {
+        display: grid;
+        grid-template-columns: 200px auto 1fr; /* Kolom label, titik dua (auto), dan value (fleksibel) */
+        align-items: baseline;
+        row-gap: 2px; /* Jarak antar baris */
+        column-gap: 4px; /* Jarak antar kolom */
       }
 
       .field-value {
         word-wrap: break-word;
         word-break: break-word;
+        hyphens: auto;
       }
+
+      /* Tidak perlu styling khusus untuk label dan colon karena grid akan mengaturnya */
     </style>
   </head>
   <body
@@ -119,7 +103,7 @@
 
           <div class="table-cell align-top text-center w-auto">
             <p class="font-bold text-10pt leading-none mb-1">
-              PEMERINTAH PROVINSI DAERAH KHUSUS IBUKOTA JAKARTA ( Ahli Waris )
+              PEMERINTAH PROVINSI DAERAH KHUSUS IBUKOTA JAKARTA (Hak Atas Tanah)
             </p>
 
             <div class="block text-left text-8pt leading-tight-custom">
@@ -223,7 +207,7 @@
           {{kelengkapan_tanggal_surat_pengantar}}, benar yang bersangkutan
           diatas akan mengurus peningkatan Sertifikat Hak Guna Bangunan menjadi
           Sertifikat Hak Milik dengan data Sertifikat Hak Guna Bangunan No. 1310
-          an. Ajun Leksama dengan luas {{kelengkapan_luas_lahan}} M2 yang
+          an. {{recipient_nama_lengkap}} dengan luas {{kelengkapan_luas_lahan}} M2 yang
           terletak di {{kelengkapan_alamat_lahan}}. DKI Jakarta dan objek tanah
           nya berdiri bangunan rumah tinggal. Surat keterangan ini diperlukan
           untuk kepengurursan Administrasi Ke BPN. Yang dipergunakan Sebagai :
